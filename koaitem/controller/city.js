@@ -2,8 +2,8 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-26 10:59:08
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-05-26 12:05:31
- * @FilePath: \koaitem\controller\city.js
+ * @LastEditTime: 2020-05-26 18:02:06
+ * @FilePath: \koa-vue\koaitem\controller\city.js
  */
 //引入db配置
 const db = require('../config/db')
@@ -40,6 +40,7 @@ class cityController {
                     }
                 } else {
                     return ctx.body = {
+                        data: getAllCity,
                         code: '000000',
                         desc: '获取用户信息成功'
                     }
