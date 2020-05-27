@@ -22,6 +22,7 @@
     "koa-static": "^5.0.0",
     "koa-views": "^6.2.0",
     "koa2-cors": "^2.0.6",
+    "koa2-request": "^1.0.4",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "pug": "^2.0.3",

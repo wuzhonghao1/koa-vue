@@ -2,8 +2,8 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-19 15:20:19
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-05-20 10:30:48
- * @FilePath: \koaitem\module\user.js
+ * @LastEditTime: 2020-05-27 14:35:04
+ * @FilePath: \koa-vue\koaitem\module\user.js
  */
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define(
@@ -30,6 +30,11 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false,
                 field: 'status',
                 defaultValue: true
+            },
+            cityId: {
+                type: DataTypes.INTEGER,
+                allowNull: true,
+                field: 'cityId',
             },
         },
         {

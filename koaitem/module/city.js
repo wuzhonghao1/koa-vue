@@ -2,8 +2,8 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-26 11:00:13
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-05-26 11:13:38
- * @FilePath: \koaitem\module\city.js
+ * @LastEditTime: 2020-05-27 10:55:43
+ * @FilePath: \koa-vue\koaitem\module\city.js
  */
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define(
@@ -54,6 +54,11 @@ module.exports = function (sequelize, DataTypes) {
                 type: DataTypes.STRING,
                 allowNull: false,
                 field: 'pinyin',
+            },
+            is_hot: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                field: 'is_hot',
             },
         },
         {
