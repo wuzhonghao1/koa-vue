@@ -2,8 +2,8 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-19 15:26:58
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-05-26 10:57:32
- * @FilePath: \koaitem\routes\user.js
+ * @LastEditTime: 2020-05-28 11:59:18
+ * @FilePath: \koa-vue\koaitem\routes\user.js
  */
 const Router = require('koa-router');
 const userController = require('../controller/user')
@@ -26,5 +26,8 @@ router.post('/reactivation', userController.reactivation)
 
 //删除用户
 router.post('/deleteUser', userController.deleteUser)
+
+//更新用户信息
+router.post('/completeUserInfo', userController.completeUserInfo)
 
 module.exports = router;

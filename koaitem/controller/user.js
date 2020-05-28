@@ -2,8 +2,8 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-19 15:21:13
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-05-26 11:44:18
- * @FilePath: \koaitem\controller\user.js
+ * @LastEditTime: 2020-05-28 17:37:13
+ * @FilePath: \koa-vue\koaitem\controller\user.js
  */
 //引入db配置
 const db = require('../config/db')
@@ -11,12 +11,14 @@ const db = require('../config/db')
 const jwt = require('jsonwebtoken')
 //引入sequelize对象
 const Sequelize = db.sequelize
+const Op = db.SequelizeOrigin.Op;
 //解析token
 const tools = require('../public/javascripts/tool')
 //统一设置token有效时间  为了方便观察，设为10s
 const expireTime = '1000000s'
 //引入数据表模型
 const user = Sequelize.import('../module/user')
+const city = Sequelize.import('../module/city')
 //自动创建表
 user.sync({ force: false });
 
@@ -46,10 +48,30 @@ class userModule {
             }
         })
     }
+    static async getCity(abbr) {
+        return await city.findOne({
+            where: {
+                name: {
+                    [Op.like]: abbr.slice(0, abbr.length)
+                }
+            }
+        });
+    }
     static async deleteUser(mobileNo) {
         return await user.destroy({
             where: {
                 mobileNo,
+            }
+        })
+    }
+    static async completeUserInfo(ctx) {
+        const result = await userModule.getCity(ctx.request.body.abbr);
+        return await user.update({
+            cityId: result.dataValues.id,
+            address: ctx.request.body.obj ? ctx.request.body.obj.district + ctx.request.body.obj.name : ctx.request.body.abbr
+        }, {
+            where: {
+                mobileNo: ctx.state.data.user
             }
         })
     }
@@ -281,6 +303,23 @@ class userController {
             }
         }
 
+    }
+    // 更新用户信息(地址)
+    static async completeUserInfo(ctx) {
+        let query = await userModule.completeUserInfo(ctx);
+        if (query) {
+            ctx.response.status = 200;
+            ctx.body = {
+                code: '000000',
+                desc: '用户修改成功'
+            }
+        } else {
+            ctx.response.status = 200;
+            ctx.body = {
+                code: 1,
+                desc: '更新失败'
+            }
+        }
     }
 }
 

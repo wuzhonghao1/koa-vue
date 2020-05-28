@@ -2,7 +2,7 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-26 10:59:08
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-05-27 14:50:04
+ * @LastEditTime: 2020-05-28 11:51:00
  * @FilePath: \koa-vue\koaitem\controller\city.js
  */
 //引入db配置
@@ -19,12 +19,12 @@ class cityModule {
     static async getAllCity() {
         return await city.findAll({});
     }
-    static async getComCity(id) {
+    static async getComCity(abbr) {
         return await city.findAll({
             order: [['abbr', 'DESC']],
             where: {
                 abbr: {
-                    [Op.like]: '%' + id + '%'
+                    [Op.like]: '%' + abbr + '%'
                 }
             }
         });
