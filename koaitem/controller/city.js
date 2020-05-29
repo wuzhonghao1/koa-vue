@@ -2,7 +2,7 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-26 10:59:08
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-05-28 11:51:00
+ * @LastEditTime: 2020-05-29 11:22:44
  * @FilePath: \koa-vue\koaitem\controller\city.js
  */
 //引入db配置
@@ -132,7 +132,6 @@ class cityController {
                     }
                 }
             } catch (error) {
-                console.log(error);
                 ctx.status = 401;
                 return ctx.body = {
                     code: '-1',
