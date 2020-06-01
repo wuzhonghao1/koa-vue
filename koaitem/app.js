@@ -2,7 +2,7 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-19 15:16:22
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-05-28 17:39:24
+ * @LastEditTime: 2020-06-01 16:44:26
  * @FilePath: \koa-vue\koaitem\app.js
  */
 const Koa = require('koa')
@@ -16,6 +16,7 @@ const cors = require('koa2-cors')
 const index = require('./routes/index')
 const user = require('./routes/user')
 const city = require('./routes/city')
+const good = require('./routes/good')
 const verToken = require('./public/javascripts/tool')
 // error handler
 onerror(app)
@@ -85,6 +86,7 @@ app.use(koajwt({
 app.use(index.routes(), index.allowedMethods())
 app.use(user.routes(), user.allowedMethods())
 app.use(city.routes(), city.allowedMethods())
+app.use(good.routes(), good.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

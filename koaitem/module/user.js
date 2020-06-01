@@ -2,7 +2,7 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-19 15:20:19
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-05-28 11:47:48
+ * @LastEditTime: 2020-06-01 16:54:48
  * @FilePath: \koa-vue\koaitem\module\user.js
  */
 module.exports = function (sequelize, DataTypes) {

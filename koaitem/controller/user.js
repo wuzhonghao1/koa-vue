@@ -2,7 +2,7 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-19 15:21:13
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-05-28 17:37:13
+ * @LastEditTime: 2020-06-01 14:26:07
  * @FilePath: \koa-vue\koaitem\controller\user.js
  */
 //引入db配置
@@ -142,7 +142,8 @@ class userController {
                         createdAt: data.createdAt,
                         updatedAt: data.updatedAt,
                         mobileNo: data.mobileNo,
-                        userId: data.userId
+                        userId: data.userId,
+                        address: data.address,
                     }
                     ctx.body = {
                         code: '000000',
