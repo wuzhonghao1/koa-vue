@@ -2,7 +2,7 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-05-19 15:16:22
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-06-01 16:44:26
+ * @LastEditTime: 2020-06-02 15:09:41
  * @FilePath: \koa-vue\koaitem\app.js
  */
 const Koa = require('koa')
@@ -17,6 +17,9 @@ const index = require('./routes/index')
 const user = require('./routes/user')
 const city = require('./routes/city')
 const good = require('./routes/good')
+const store = require('./routes/store')
+const shopingCart = require('./routes/shopingCart')
+const order = require('./routes/order')
 const verToken = require('./public/javascripts/tool')
 // error handler
 onerror(app)
@@ -87,6 +90,10 @@ app.use(index.routes(), index.allowedMethods())
 app.use(user.routes(), user.allowedMethods())
 app.use(city.routes(), city.allowedMethods())
 app.use(good.routes(), good.allowedMethods())
+
+app.use(store.routes(), store.allowedMethods())
+app.use(shopingCart.routes(), shopingCart.allowedMethods())
+app.use(order.routes(), order.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

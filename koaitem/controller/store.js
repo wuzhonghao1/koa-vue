@@ -2,8 +2,8 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-06-01 16:39:36
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-06-02 17:42:29
- * @FilePath: \koa-vue\koaitem\controller\good.js
+ * @LastEditTime: 2020-06-02 17:38:37
+ * @FilePath: \koa-vue\koaitem\controller\store.js
  */
 //引入db配置
 const db = require('../config/db')
@@ -13,52 +13,39 @@ const Op = db.SequelizeOrigin.Op;
 //解析token
 const tools = require('../public/javascripts/tool')
 //引入数据表模型
-const good = Sequelize.import('../module/good')
+const store = Sequelize.import('../module/store')
 
-class goodModule {
-    static async getAllGoods() {
-        return await good.findAll({
-            where: {
-                id: {
-                    [Op.between]: [15, 25]
-                },
-
-            }
-        })
+class storeModule {
+    static async getAllstores() {
+        return await store.findAll()
     }
-    static async getOneGood(id) {
-        return await good.findOne({
+    static async getOneStore(id) {
+        console.log(id);
+        return await store.findOne({
             where: {
                 id
             }
         })
     }
-    static async getStoreGoods(storeId) {
-        return await good.findAll({
-            where: {
-                storeId
-            }
-        })
-    }
 }
-class goodController {
-    static async getAllGoods(ctx) {
+class storeController {
+    static async getAllstores(ctx) {
         const req = ctx.request.body;
         const token = ctx.headers.authorization;
         if (token) {
             try {
                 const result = await tools.verToken(token);
-                const getAllGoods = await goodModule.getAllGoods();
-                if (!getAllGoods) {
+                const getAllstores = await storeModule.getAllstores();
+                if (!getAllstores) {
                     return ctx.body = {
                         code: '-1',
                         desc: '参数错误'
                     }
                 } else {
                     return ctx.body = {
-                        data: getAllGoods,
+                        data: getAllstores,
                         code: '000000',
-                        desc: '获取商品信息成功'
+                        desc: '获取店铺信息成功'
                     }
                 }
             } catch (error) {
@@ -77,58 +64,22 @@ class goodController {
             }
         }
     }
-    static async getOneGood(ctx) {
+    static async getOneStore(ctx) {
         const req = ctx.request.body;
         const id = ctx.params.id;
         const token = ctx.headers.authorization;
         if (token) {
             try {
                 const result = await tools.verToken(token);
-                const getOneGood = await goodModule.getOneGood(id);
-                if (!getOneGood) {
+                const getOneStore = await storeModule.getOneStore(id);
+                if (!getOneStore) {
                     return ctx.body = {
                         code: '-1',
                         desc: '参数错误'
                     }
                 } else {
                     return ctx.body = {
-                        data: getOneGood,
-                        code: '000000',
-                        desc: '获取商品信息成功'
-                    }
-                }
-            } catch (error) {
-                console.log(error);
-                ctx.status = 401;
-                return ctx.body = {
-                    code: '-1',
-                    desc: '登陆过期，请重新登陆1'
-                }
-            }
-        } else {
-            ctx.status = 401;
-            return ctx.body = {
-                code: '-1',
-                desc: '登陆过期，请重新登陆2'
-            }
-        }
-    }
-    static async getStoreGoods(ctx) {
-        const req = ctx.request.body;
-        const storeId = ctx.params.storeId;
-        const token = ctx.headers.authorization;
-        if (token) {
-            try {
-                const result = await tools.verToken(token);
-                const getStoreGoods = await goodModule.getStoreGoods(storeId);
-                if (!getStoreGoods) {
-                    return ctx.body = {
-                        code: '-1',
-                        desc: '参数错误'
-                    }
-                } else {
-                    return ctx.body = {
-                        data: getStoreGoods,
+                        data: getOneStore,
                         code: '000000',
                         desc: '获取商品信息成功'
                     }
@@ -150,4 +101,4 @@ class goodController {
         }
     }
 }
-module.exports = goodController;
+module.exports = storeController;

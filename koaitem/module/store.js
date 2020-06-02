@@ -1,59 +1,59 @@
 /*
  * @Author: ZhongHao Wu
- * @Date: 2020-06-01 16:33:24
+ * @Date: 2020-06-02 14:56:51
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-06-01 16:50:50
- * @FilePath: \koa-vue\koaitem\module\good.js
+ * @LastEditTime: 2020-06-02 15:00:01
+ * @FilePath: \koa-vue\koaitem\module\store.js
  */
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define(
-        'good',
+        'store',
         {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
+                allowNull: true,
                 autoIncrement: true
             },
-            price: {
+            storeName: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                field: 'price'
+                field: 'storeName'
             },
-            name: {
+            master: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                field: 'name'
+                field: 'master'
             },
-            imgSrc: {
+            address: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                field: 'imgSrc',
-                defaultValue: true
+                field: 'address'
             },
-            appraise: {
+            mainShop: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                field: 'appraise',
-            },
-            type: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                field: 'type',
+                field: 'mainShop'
             },
             payNum: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                field: 'payNum',
+                field: 'payNum'
             },
-            storeId: {
+            highPraise: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                field: 'storeId',
+                field: 'highPraise'
             },
+            imgSrc: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                field: 'imgSrc'
+            },
+
         },
         {
             timestamps: false
         }
     )
-
 }
