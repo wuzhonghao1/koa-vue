@@ -2,7 +2,7 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-06-01 16:39:36
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-06-02 17:42:29
+ * @LastEditTime: 2020-08-11 17:49:18
  * @FilePath: \koa-vue\koaitem\controller\good.js
  */
 //引入db配置
@@ -33,11 +33,17 @@ class goodModule {
             }
         })
     }
-    static async getStoreGoods(storeId) {
+    static async getStoreGoods(req) {
+        let pageSize = req.pageSize
+        let pageNum = req.pageNum
+        let storeId = req.storeId
         return await good.findAll({
             where: {
                 storeId
-            }
+            },
+            offset: pageSize * (pageNum - 1),
+            order: [['id']],
+            limit: pageSize
         })
     }
 }
@@ -115,12 +121,11 @@ class goodController {
     }
     static async getStoreGoods(ctx) {
         const req = ctx.request.body;
-        const storeId = ctx.params.storeId;
         const token = ctx.headers.authorization;
         if (token) {
             try {
                 const result = await tools.verToken(token);
-                const getStoreGoods = await goodModule.getStoreGoods(storeId);
+                const getStoreGoods = await goodModule.getStoreGoods(req);
                 if (!getStoreGoods) {
                     return ctx.body = {
                         code: '-1',
