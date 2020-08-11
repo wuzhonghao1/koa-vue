@@ -2,7 +2,7 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-06-01 16:39:36
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-08-11 11:19:16
+ * @LastEditTime: 2020-08-11 11:37:05
  * @FilePath: \koa-vue\koaitem\controller\store.js
  */
 //引入db配置
@@ -16,8 +16,10 @@ const tools = require('../public/javascripts/tool')
 const store = Sequelize.import('../module/store')
 
 class storeModule {
-    static async getAllstores() {
-        return await store.findAll({ limit: 5 })
+    static async getAllstores(req) {
+        let pageSize = req.pageSize
+        let pageNum = req.pageNum
+        return await store.findAll({ offset: pageSize * (pageNum - 1), order: [['id']], limit: pageSize })
     }
     static async getOneStore(id) {
         console.log(id);
@@ -31,11 +33,13 @@ class storeModule {
 class storeController {
     static async getAllstores(ctx) {
         const req = ctx.request.body;
+        console.log('req', req);
+
         const token = ctx.headers.authorization;
         if (token) {
             try {
                 const result = await tools.verToken(token);
-                const getAllstores = await storeModule.getAllstores();
+                const getAllstores = await storeModule.getAllstores(req);
                 if (!getAllstores) {
                     return ctx.body = {
                         code: '-1',
