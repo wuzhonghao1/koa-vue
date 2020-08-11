@@ -51,13 +51,13 @@ class cityController {
                 if (!getAllCity) {
                     return ctx.body = {
                         code: '-1',
-                        desc: '参数错误'
+                        msg: '参数错误'
                     }
                 } else {
                     return ctx.body = {
                         data: getAllCity,
                         code: '000000',
-                        desc: '获取城市信息成功'
+                        msg: '获取城市信息成功'
                     }
                 }
             } catch (error) {
@@ -65,14 +65,14 @@ class cityController {
                 ctx.status = 401;
                 return ctx.body = {
                     code: '-1',
-                    desc: '登陆过期，请重新登陆1'
+                    msg: '登陆过期，请重新登陆1'
                 }
             }
         } else {
             ctx.status = 401;
             return ctx.body = {
                 code: '-1',
-                desc: '登陆过期，请重新登陆2'
+                msg: '登陆过期，请重新登陆2'
             }
         }
     }
@@ -87,13 +87,13 @@ class cityController {
                 if (!getComCity) {
                     return ctx.body = {
                         code: '-1',
-                        desc: '参数错误'
+                        msg: '参数错误'
                     }
                 } else {
                     return ctx.body = {
                         data: getComCity,
                         code: '000000',
-                        desc: '获取城市信息成功'
+                        msg: '获取城市信息成功'
                     }
                 }
             } catch (error) {
@@ -101,14 +101,14 @@ class cityController {
                 ctx.status = 401;
                 return ctx.body = {
                     code: '-1',
-                    desc: '登陆过期，请重新登陆1'
+                    msg: '登陆过期，请重新登陆1'
                 }
             }
         } else {
             ctx.status = 401;
             return ctx.body = {
                 code: '-1',
-                desc: '登陆过期，请重新登陆2'
+                msg: '登陆过期，请重新登陆2'
             }
         }
     }
@@ -122,27 +122,27 @@ class cityController {
                 if (!getHotCity) {
                     return ctx.body = {
                         code: '-1',
-                        desc: '参数错误'
+                        msg: '参数错误'
                     }
                 } else {
                     return ctx.body = {
                         data: getHotCity,
                         code: '000000',
-                        desc: '获取热门城市信息成功'
+                        msg: '获取热门城市信息成功'
                     }
                 }
             } catch (error) {
                 ctx.status = 401;
                 return ctx.body = {
                     code: '-1',
-                    desc: '登陆过期，请重新登陆1'
+                    msg: '登陆过期，请重新登陆1'
                 }
             }
         } else {
             ctx.status = 401;
             return ctx.body = {
                 code: '-1',
-                desc: '登陆过期，请重新登陆2'
+                msg: '登陆过期，请重新登陆2'
             }
         }
     }

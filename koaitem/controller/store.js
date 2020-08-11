@@ -2,7 +2,7 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-06-01 16:39:36
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-06-02 17:38:37
+ * @LastEditTime: 2020-08-11 11:19:16
  * @FilePath: \koa-vue\koaitem\controller\store.js
  */
 //引入db配置
@@ -17,7 +17,7 @@ const store = Sequelize.import('../module/store')
 
 class storeModule {
     static async getAllstores() {
-        return await store.findAll()
+        return await store.findAll({ limit: 5 })
     }
     static async getOneStore(id) {
         console.log(id);
@@ -39,13 +39,13 @@ class storeController {
                 if (!getAllstores) {
                     return ctx.body = {
                         code: '-1',
-                        desc: '参数错误'
+                        msg: '参数错误'
                     }
                 } else {
                     return ctx.body = {
                         data: getAllstores,
                         code: '000000',
-                        desc: '获取店铺信息成功'
+                        msg: '获取店铺信息成功'
                     }
                 }
             } catch (error) {
@@ -53,14 +53,14 @@ class storeController {
                 ctx.status = 401;
                 return ctx.body = {
                     code: '-1',
-                    desc: '登陆过期，请重新登陆1'
+                    msg: '登陆过期，请重新登陆1'
                 }
             }
         } else {
             ctx.status = 401;
             return ctx.body = {
                 code: '-1',
-                desc: '登陆过期，请重新登陆2'
+                msg: '登陆过期，请重新登陆2'
             }
         }
     }
@@ -75,13 +75,13 @@ class storeController {
                 if (!getOneStore) {
                     return ctx.body = {
                         code: '-1',
-                        desc: '参数错误'
+                        msg: '参数错误'
                     }
                 } else {
                     return ctx.body = {
                         data: getOneStore,
                         code: '000000',
-                        desc: '获取商品信息成功'
+                        msg: '获取商品信息成功'
                     }
                 }
             } catch (error) {
@@ -89,14 +89,14 @@ class storeController {
                 ctx.status = 401;
                 return ctx.body = {
                     code: '-1',
-                    desc: '登陆过期，请重新登陆1'
+                    msg: '登陆过期，请重新登陆1'
                 }
             }
         } else {
             ctx.status = 401;
             return ctx.body = {
                 code: '-1',
-                desc: '登陆过期，请重新登陆2'
+                msg: '登陆过期，请重新登陆2'
             }
         }
     }

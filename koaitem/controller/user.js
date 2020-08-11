@@ -88,13 +88,13 @@ class userController {
                 ctx.response.status = 200;
                 ctx.body = {
                     code: '-2',
-                    desc: '用户曾经注册，但是已经注销'
+                    msg: '用户曾经注册，但是已经注销'
                 }
             } else if (query1) {
                 ctx.response.status = 200;
                 ctx.body = {
                     code: '-1',
-                    desc: '用户已注册'
+                    msg: '用户已注册'
                 }
             } else {
                 const param = {
@@ -106,7 +106,7 @@ class userController {
                 ctx.response.status = 200;
                 ctx.body = {
                     code: '000000',
-                    desc: '用户注册成功',
+                    msg: '用户注册成功',
                     userInfo: {
                         mobileNo: req.mobileNo
                     }
@@ -116,7 +116,7 @@ class userController {
             ctx.response.status = 416;
             ctx.body = {
                 code: -1,
-                desc: '请填写正确参数'
+                msg: '请填写正确参数'
             }
         }
     }
@@ -149,24 +149,24 @@ class userController {
                         code: '000000',
                         token: token,
                         userInfo: JSON.stringify(info),
-                        desc: '登陆成功'
+                        msg: '登陆成功'
                     }
                 } else {
                     ctx.body = {
                         code: '-1',
-                        desc: '用户密码错误'
+                        msg: '用户密码错误'
                     }
                 }
             } else {
                 if (query1) {
                     ctx.body = {
                         code: '-1',
-                        desc: '该用户已注销'
+                        msg: '该用户已注销'
                     }
                 } else {
                     ctx.body = {
                         code: '-1',
-                        desc: '该用户尚未注册'
+                        msg: '该用户尚未注册'
                     }
                 }
             }
@@ -182,7 +182,7 @@ class userController {
                 if (!req.mobileNo) {
                     return ctx.body = {
                         code: '-1',
-                        desc: '参数错误'
+                        msg: '参数错误'
                     }
                 } else {
                     let data = await userModule.getUserInfo(req.mobileNo, 1);
@@ -196,7 +196,7 @@ class userController {
                         return ctx.body = {
                             code: '000000',
                             userInfo: JSON.stringify(info),
-                            desc: '获取用户信息成功'
+                            msg: '获取用户信息成功'
                         }
                     }
                 }
@@ -204,14 +204,14 @@ class userController {
                 ctx.status = 401;
                 return ctx.body = {
                     code: '-1',
-                    desc: '登陆过期，请重新登陆'
+                    msg: '登陆过期，请重新登陆'
                 }
             }
         } else {
             ctx.status = 401;
             return ctx.body = {
                 code: '-1',
-                desc: '登陆过期，请重新登陆'
+                msg: '登陆过期，请重新登陆'
             }
         }
     }
@@ -228,20 +228,20 @@ class userController {
                         ctx.response.status = 200;
                         ctx.body = {
                             code: "000000",
-                            desc: '重新启用成功'
+                            msg: '重新启用成功'
                         }
                     } else {
                         ctx.response.status = 200;
                         ctx.body = {
                             code: -1,
-                            desc: '密码错误，无法重新启用'
+                            msg: '密码错误，无法重新启用'
                         }
                     }
                 } else {
                     ctx.response.status = 200;
                     ctx.body = {
                         code: -1,
-                        desc: query1 ? '此用户可以登录，请登录' : '没有此用户，请注册'
+                        msg: query1 ? '此用户可以登录，请登录' : '没有此用户，请注册'
                     }
                 }
             } else {
@@ -251,20 +251,20 @@ class userController {
                         ctx.response.status = 200;
                         ctx.body = {
                             code: "000000",
-                            desc: '注销成功'
+                            msg: '注销成功'
                         }
                     } else {
                         ctx.response.status = 200;
                         ctx.body = {
                             code: -1,
-                            desc: '密码错误，无法注销'
+                            msg: '密码错误，无法注销'
                         }
                     }
                 } else {
                     ctx.response.status = 200;
                     ctx.body = {
                         code: -1,
-                        desc: query0 ? '此用户已注销' : '没有此用户，请注册'
+                        msg: query0 ? '此用户已注销' : '没有此用户，请注册'
                     }
                 }
             }
@@ -272,7 +272,7 @@ class userController {
             ctx.response.status = 200;
             ctx.body = {
                 code: -1,
-                desc: req.status ? '请填写重新启用的用户名称和密码' : '请填写要注销的用户名称和密码'
+                msg: req.status ? '请填写重新启用的用户名称和密码' : '请填写要注销的用户名称和密码'
             }
         }
     }
@@ -287,20 +287,20 @@ class userController {
                 ctx.response.status = 200;
                 ctx.body = {
                     code: '000000',
-                    desc: '用户删除成功'
+                    msg: '用户删除成功'
                 }
             } else {
                 ctx.response.status = 200;
                 ctx.body = {
                     code: -1,
-                    desc: '没有此用户'
+                    msg: '没有此用户'
                 }
             }
         } else {
             ctx.response.status = 200;
             ctx.body = {
                 code: -1,
-                desc: '请输入要删除的用户名和密码'
+                msg: '请输入要删除的用户名和密码'
             }
         }
 
@@ -312,13 +312,13 @@ class userController {
             ctx.response.status = 200;
             ctx.body = {
                 code: '000000',
-                desc: '用户修改成功'
+                msg: '用户修改成功'
             }
         } else {
             ctx.response.status = 200;
             ctx.body = {
                 code: 1,
-                desc: '更新失败'
+                msg: '更新失败'
             }
         }
     }

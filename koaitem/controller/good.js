@@ -52,13 +52,13 @@ class goodController {
                 if (!getAllGoods) {
                     return ctx.body = {
                         code: '-1',
-                        desc: '参数错误'
+                        msg: '参数错误'
                     }
                 } else {
                     return ctx.body = {
                         data: getAllGoods,
                         code: '000000',
-                        desc: '获取商品信息成功'
+                        msg: '获取商品信息成功'
                     }
                 }
             } catch (error) {
@@ -66,14 +66,14 @@ class goodController {
                 ctx.status = 401;
                 return ctx.body = {
                     code: '-1',
-                    desc: '登陆过期，请重新登陆1'
+                    msg: '登陆过期，请重新登陆1'
                 }
             }
         } else {
             ctx.status = 401;
             return ctx.body = {
                 code: '-1',
-                desc: '登陆过期，请重新登陆2'
+                msg: '登陆过期，请重新登陆2'
             }
         }
     }
@@ -88,13 +88,13 @@ class goodController {
                 if (!getOneGood) {
                     return ctx.body = {
                         code: '-1',
-                        desc: '参数错误'
+                        msg: '参数错误'
                     }
                 } else {
                     return ctx.body = {
                         data: getOneGood,
                         code: '000000',
-                        desc: '获取商品信息成功'
+                        msg: '获取商品信息成功'
                     }
                 }
             } catch (error) {
@@ -102,14 +102,14 @@ class goodController {
                 ctx.status = 401;
                 return ctx.body = {
                     code: '-1',
-                    desc: '登陆过期，请重新登陆1'
+                    msg: '登陆过期，请重新登陆1'
                 }
             }
         } else {
             ctx.status = 401;
             return ctx.body = {
                 code: '-1',
-                desc: '登陆过期，请重新登陆2'
+                msg: '登陆过期，请重新登陆2'
             }
         }
     }
@@ -124,13 +124,13 @@ class goodController {
                 if (!getStoreGoods) {
                     return ctx.body = {
                         code: '-1',
-                        desc: '参数错误'
+                        msg: '参数错误'
                     }
                 } else {
                     return ctx.body = {
                         data: getStoreGoods,
                         code: '000000',
-                        desc: '获取商品信息成功'
+                        msg: '获取商品信息成功'
                     }
                 }
             } catch (error) {
@@ -138,14 +138,14 @@ class goodController {
                 ctx.status = 401;
                 return ctx.body = {
                     code: '-1',
-                    desc: '登陆过期，请重新登陆1'
+                    msg: '登陆过期，请重新登陆1'
                 }
             }
         } else {
             ctx.status = 401;
             return ctx.body = {
                 code: '-1',
-                desc: '登陆过期，请重新登陆2'
+                msg: '登陆过期，请重新登陆2'
             }
         }
     }

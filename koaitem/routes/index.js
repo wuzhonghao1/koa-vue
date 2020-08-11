@@ -21,27 +21,27 @@ router.get('/belongCity', async (ctx, next) => {
 			if (!ip) {
 				return ctx.body = {
 					code: '-1',
-					desc: '参数错误'
+					msg: '参数错误'
 				}
 			} else {
 				return ctx.body = {
 					data: id,
 					code: '000000',
-					desc: '获取ip成功'
+					msg: '获取ip成功'
 				}
 			}
 		} catch (error) {
 			ctx.status = 401;
 			return ctx.body = {
 				code: '-1',
-				desc: '登陆过期，请重新登陆1'
+				msg: '登陆过期，请重新登陆1'
 			}
 		}
 	} else {
 		ctx.status = 401;
 		return ctx.body = {
 			code: '-1',
-			desc: '登陆过期，请重新登陆2'
+			msg: '登陆过期，请重新登陆2'
 		}
 	}
 })
