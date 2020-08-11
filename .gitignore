@@ -1,7 +1,7 @@
 .DS_Store
-koa/node_modules/
+ReferenceItem/koa/node_modules/
 koaitem/node_modules/
-koatest/node_modules/
-vue2-elm/node_modules/
+ReferenceItem/koatest/node_modules/
+ReferenceItem/vue2-elm/node_modules/
 vue-ele/node_modules/
 npm-debug.log*
