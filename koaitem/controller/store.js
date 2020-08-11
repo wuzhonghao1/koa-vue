@@ -2,7 +2,7 @@
  * @Author: ZhongHao Wu
  * @Date: 2020-06-01 16:39:36
  * @LastEditors: ZhongHao Wu
- * @LastEditTime: 2020-08-11 11:37:05
+ * @LastEditTime: 2020-08-11 11:40:26
  * @FilePath: \koa-vue\koaitem\controller\store.js
  */
 //引入db配置
@@ -19,7 +19,11 @@ class storeModule {
     static async getAllstores(req) {
         let pageSize = req.pageSize
         let pageNum = req.pageNum
-        return await store.findAll({ offset: pageSize * (pageNum - 1), order: [['id']], limit: pageSize })
+        return await store.findAll({
+            offset: pageSize * (pageNum - 1),
+            order: [['id']],
+            limit: pageSize
+        })
     }
     static async getOneStore(id) {
         console.log(id);
