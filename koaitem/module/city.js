@@ -6,63 +6,63 @@
  * @FilePath: \koa-vue\koaitem\module\city.js
  */
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define(
-        'city',
-        {
-            id: {
-                type: DataTypes.INTEGER,
-                primaryKey: true,
-                allowNull: false,
-                autoIncrement: true
-            },
-            name: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                field: 'name'
-            },
-            is_map: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                field: 'is_map'
-            },
-            longitude: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                field: 'longitude',
-            },
-            latitude: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                field: 'latitude',
-            },
-            sort: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                field: 'sort',
-            },
-            area_code: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                field: 'area_code',
-            },
-            abbr: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                field: 'abbr',
-            },
-            pinyin: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                field: 'pinyin',
-            },
-            is_hot: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                field: 'is_hot',
-            },
-        },
-        {
-            timestamps: false
-        }
-    );
-}
+  return sequelize.define(
+    "city",
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: "name",
+      },
+      is_map: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: "is_map",
+      },
+      longitude: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: "longitude",
+      },
+      latitude: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: "latitude",
+      },
+      sort: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: "sort",
+      },
+      area_code: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: "area_code",
+      },
+      abbr: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: "abbr",
+      },
+      pinyin: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: "pinyin",
+      },
+      is_hot: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: "is_hot",
+      },
+    },
+    {
+      timestamps: false,
+    }
+  );
+};
